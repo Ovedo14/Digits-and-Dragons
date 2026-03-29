@@ -13,7 +13,7 @@ public class playButton : MonoBehaviour
         _uiDocument = GetComponent<UIDocument>();
         var root = _uiDocument.rootVisualElement;
 
-        // Buscamos el Fader y el Botón por su "Name" del UI Builder
+        // Buscamos el Fader y el Botï¿½n por su "Name" del UI Builder
         _fader = root.Q<VisualElement>("Fader");
         Button btn = root.Q<Button>("play");
 
@@ -23,7 +23,7 @@ public class playButton : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No encontré el botón 'Play'. Revisa el Name en UI Builder.");
+            Debug.LogError("No encontrï¿½ el botï¿½n 'Play'. Revisa el Name en UI Builder.");
         }
     }
 
@@ -43,7 +43,7 @@ public class playButton : MonoBehaviour
             }
         }
 
-        // Cargamos la escena cuando la pantalla ya esté negra
-        SceneManager.LoadScene("MainScene");
+        // Cargamos la escena cuando la pantalla ya estï¿½ negra
+        SceneManager.LoadScene("CharSelect");
     }
 }
