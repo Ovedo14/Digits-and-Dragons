@@ -1,12 +1,19 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=bf0d48a8e2fbe0e4da86856a96f09ec4&amp;type=3#MainMenu"/>
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); opacity: 1;">
-        <ui:Image data-source="project://database/Assets/tile/Logo_0.asset?fileID=11400000&amp;guid=d01d35573abb6aa4db97b09ac6c2896f&amp;type=2#Logo_0" source="project://database/Assets/Resources/Logo.png?fileID=2800000&amp;guid=194c1c827e1d1d24cabe3e72b84ba36b&amp;type=3#Logo" scale-mode="ScaleToFit" picking-mode="Position" style="width: 309px; height: 391px; justify-content: flex-start; align-items: auto; align-self: auto; align-content: auto; margin-left: 5%;"/>
-        <ui:VisualElement name="Buttons" class="buttons" style="flex-grow: 1; justify-content: center; margin-left: 3%; width: 346px; position: absolute;">
-            <ui:Button text="Play" name="play" class="playButton" style="height: auto; -unity-text-align: middle-left; -unity-font-definition: resource(&quot;WonderworldPersonalUseRegular-gxdo3&quot;); margin-top: -41px;"/>
-            <ui:Button text="Settings" name="Settings" class="settingsButton playButton" style="height: auto; -unity-text-align: middle-left; -unity-font-definition: resource(&quot;WonderworldPersonalUseRegular-gxdo3&quot;); margin-left: 4%; margin-top: 2%; margin-right: 4%;"/>
-            <ui:Button text="Button" name="Button" class="credits playButton" style="-unity-text-align: middle-left; -unity-font-definition: resource(&quot;WonderworldPersonalUseRegular-gxdo3&quot;); height: auto;"/>
+    <ui:VisualElement name="Principal" enabled="true" style="flex-grow: 1; opacity: 1;">
+        <ui:Label text="Digits &amp;&#10;Dragons" name="Titulo" class="TitleText titulo"/>
+        <ui:VisualElement name="Central" class="central" style="flex-grow: 1;">
+            <ui:Button text="Elegir personaje" name="ElegirPersonaje" class="boton botonCentral"/>
+            <ui:Button text="Cargar Partida" name="CargarPartida" class="boton"/>
+            <ui:Button text="Salir" name="Salir" class="boton botonCentral"/>
         </ui:VisualElement>
+        <ui:Button text="" name="BotonOpciones" icon-image="project://database/Assets/UI/UIElementos/settings.png?fileID=2800000&amp;guid=249e4f80a84311345a79f5df4c92ac49&amp;type=3#settings" class="boton" style="position: absolute; right: 20px; top: 50px; width: 150px; height: 150px; background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Banners/Banner_Slots.png?fileID=2800000&amp;guid=780eafe1c8a324cab90d18efc7967e7b&amp;type=3#Banner_Slots&quot;);"/>
     </ui:VisualElement>
-    <ui:VisualElement picking-mode="Ignore" name="Fader" class="fade fader" style="flex-grow: 1; background-color: rgb(0, 0, 0); opacity: 0;"/>
+    <ui:VisualElement name="Filter" picking-mode="Ignore" style="flex-grow: 1; background-color: rgb(0, 0, 0); position: absolute; width: 1920px; height: 1080px; opacity: 0;"/>
+    <ui:VisualElement name="Opciones" enabled="true" class="secundario" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/UI%20board%20Large%20%20parchment.png?fileID=2800000&amp;guid=43a7d98bd4222b64e933596512dc09ad&amp;type=3#UI board Large  parchment&quot;); display: none;">
+        <ui:Slider label="Volumen de &#10;Música" value="0" high-value="100" name="SliderMusica" direction="Horizontal" inverted="false" fill="false" enabled="true" class="slider texto sld" style="position: absolute; top: 150px; left: 150px; width: 800px; height: 120px; padding-bottom: 0;"/>
+        <ui:Slider label="Volumen de &#10;Sonidos" value="0" high-value="100" name="SliderSFX" direction="Horizontal" inverted="false" fill="false" class="slider texto" style="position: absolute; top: 350px; left: 150px; width: 800px; height: 120px;"/>
+        <ui:Toggle label="Cambiar a Fullscreen  ‎ " name="ToggleVentana" toggle-on-label-click="true" class="texto" style="position: absolute; top: 550px; left: 150px;"/>
+        <ui:Button text="Button" name="RegresarOpciones" class="botonRegreso"/>
+    </ui:VisualElement>
 </ui:UXML>
