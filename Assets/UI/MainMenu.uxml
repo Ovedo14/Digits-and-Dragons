@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=bf0d48a8e2fbe0e4da86856a96f09ec4&amp;type=3#MainMenu"/>
     <ui:VisualElement name="Principal" enabled="true" style="flex-grow: 1; opacity: 1;">
-        <ui:Label text="Digits &amp;&#10;Dragons" name="Titulo" class="TitleText titulo"/>
-        <ui:VisualElement name="Central" class="central" style="flex-grow: 1;">
+        <ui:Label text="Digits &amp;&#10;Dragons" name="Titulo" class="TitleText titulo" style="-unity-text-align: upper-left; position: absolute; top: 22px; left: 653px;"/>
+        <ui:VisualElement name="Central" class="central" style="flex-grow: 1; top: 393px; left: 500px;">
             <ui:Button text="Elegir personaje" name="ElegirPersonaje" class="boton botonCentral"/>
             <ui:Button text="Cargar Partida" name="CargarPartida" class="boton"/>
             <ui:Button text="Salir" name="Salir" class="boton botonCentral"/>

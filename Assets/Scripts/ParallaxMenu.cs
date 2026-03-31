@@ -3,7 +3,8 @@ using UnityEngine;
 public class ParallaxMenu : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed;
-    private float textureSize;
+    [SerializeField] private float textureSize;
+    
 
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
@@ -12,8 +13,6 @@ public class ParallaxMenu : MonoBehaviour
     {
         cameraTransform = Camera.main.transform;
         lastCameraPosition = cameraTransform.position;
-        textureSize = 19.2f;
-
     }
 
     void LateUpdate()
