@@ -1,7 +1,20 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "NewScriptableObjectScript", menuName = "Scriptable Objects/NewScriptableObjectScript")]
-public class NewScriptableObjectScript : ScriptableObject
+[CreateAssetMenu(menuName = "Game/Character")]
+public class CharacterData : ScriptableObject
 {
-    
+    [Header("Visuals")]
+    public Sprite Portrait;
+    public Sprite CharacterSprite;
+
+    [Header("Animations")]
+    public AnimationClip IdleAnimation;
+    public AnimationClip AttackAnimation;
+
+    [Header("Stats")]
+    public int StartingHP;
+
+    [Header("Starting Relics")]
+    public List<RelicData> StartingRelics;
 }
