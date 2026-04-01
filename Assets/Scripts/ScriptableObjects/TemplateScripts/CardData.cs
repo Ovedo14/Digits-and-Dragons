@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public enum CardOperation {Add, Subtract, Multiply}
 
 [CreateAssetMenu(menuName = "Game/Card")]
 public class CardData : ScriptableObject
 {
     public CardOperation Operation;
-    public int Value;
+    public float Value;
     public Sprite Artwork;
 
-    public int ApplyTo(int laneValue)
+    public float ApplyTo(float laneValue)
     {
         return Operation switch
         {

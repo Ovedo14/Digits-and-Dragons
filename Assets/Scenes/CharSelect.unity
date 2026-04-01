@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 384407911}
   - component: {fileID: 384407910}
   - component: {fileID: 384407909}
+  - component: {fileID: 384407913}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -815,6 +816,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &384407913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384407908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0425173100a404141bc1a848bbca60ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::charSelectButton
+  _character: {fileID: 11400000, guid: fbd9ee617e0d1c543927abf21be513fe, type: 2}
 --- !u!1 &449646869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1832,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1077248722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 384407913}
+        m_TargetAssemblyTypeName: charSelectButton, Assembly-CSharp
+        m_MethodName: OnSelectCharacterPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1077248722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2614,6 +2640,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787603484}
   m_CullTransparentMesh: 1
+--- !u!1 &1788303856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788303858}
+  - component: {fileID: 1788303857}
+  m_Layer: 0
+  m_Name: RunManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1788303857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788303856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb24f2c9285ec2947b0c7a08607a3d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunManager
+  PlayerHP: 0
+  PlayerMaxHP: 0
+  Relics: []
+  CombatCount: 0
+  _combatsBeforeBoss: 5
+--- !u!4 &1788303858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788303856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.46551, y: 0.70276, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907366482
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,3 +3532,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 990201902}
   - {fileID: 384407912}
+  - {fileID: 1788303858}

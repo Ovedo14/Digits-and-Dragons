@@ -1,4 +1,4 @@
-// Combat flow
+//Combat flow
 public struct OnTurnStarted { }
 public struct OnTurnEnded { }
 
@@ -7,32 +7,32 @@ public struct OnCombatEnded
     public bool PlayerWon;
 }
 
-// Cards
+//Cards
 public struct OnCardPlayed
 {
     public CardData Card;
     public int LaneIndex;
 }
 
-// Lanes
+//Lanes
 public struct OnLanesResolved
 {
-    public int[] LaneResults;
+    public float[] LaneResults;
 }
 
-// Damage
+//Damage
 public struct OnDamageDealt
 {
-    public int Amount;
+    public float Amount;
     public bool ToPlayer;
 }
 
-// Relics
+//Relics
 public struct OnRelicTriggered
 {
     public RelicData Relic;
 }
 
-// Run flow
+//Run flow
 public struct OnCombatCompleted { }
 public struct OnEventCompleted { }
