@@ -5,13 +5,13 @@ public class FlowController : MonoBehaviour
     [SerializeField] private CombatManager _combatManager;
     [SerializeField] private EnemyManager _enemyManager;
 
+    [Header("Screens")]
+    [SerializeField] private GameObject _combatScreen;
+    [SerializeField] private GameObject _eventScreen;
+
     [Header("Enemy Pool")]
     [SerializeField] private EnemyData[] _enemyPool;
 
-    void Start()
-    {
-        StartNextCombat();
-    }
     void OnEnable()
     {
         EventBus.Subscribe<OnCombatCompleted>(HandleCombatCompleted);
@@ -22,10 +22,22 @@ public class FlowController : MonoBehaviour
         EventBus.Unsubscribe<OnCombatCompleted>(HandleCombatCompleted);
     }
 
-    //Called by character selection screen
-    public void StartRun(CharacterData character)
+    void Start()
     {
-        RunManager.Instance.InitializeRun(character);
+        ShowCombat();
+        StartNextCombat();
+    }
+
+    private void HandleCombatCompleted(OnCombatCompleted evt)
+    {
+        RunManager.Instance.CombatCount++;
+        ShowEvent();
+    }
+
+    // Called by your Canvas Button on the event screen
+    public void OnEventFinished()
+    {
+        ShowCombat();
         StartNextCombat();
     }
 
@@ -36,18 +48,23 @@ public class FlowController : MonoBehaviour
         _combatManager.StartCombat();
     }
 
+    private void ShowCombat()
+    {
+        _combatScreen.SetActive(true);
+        _eventScreen.SetActive(false);
+    }
+
+    private void ShowEvent()
+    {
+        _eventScreen.SetActive(true);
+        _combatScreen.SetActive(false);
+    }
+
     private EnemyData PickNextEnemy()
     {
         if (RunManager.Instance.IsFinalBoss)
-            return _enemyPool[_enemyPool.Length - 1]; // last entry is always the boss
+            return _enemyPool[_enemyPool.Length - 1];
 
         return _enemyPool[Random.Range(0, _enemyPool.Length - 1)];
-    }
-
-    private void HandleCombatCompleted(OnCombatCompleted evt)
-    {
-        // Events and run progression go here later
-        RunManager.Instance.CombatCount++;
-        StartNextCombat();
     }
 }
