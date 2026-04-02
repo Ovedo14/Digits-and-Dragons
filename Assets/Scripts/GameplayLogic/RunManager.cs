@@ -46,8 +46,11 @@ public class RunManager : MonoBehaviour
             EventBus.Publish(new OnCombatEnded { PlayerWon = false });
     }
 
+    public CharacterData CurrentCharacter { get; private set; }
+
     public void InitializeRun(CharacterData character)
     {
+        CurrentCharacter = character;
         PlayerMaxHP = character.StartingHP;
         PlayerHP = character.StartingHP;
         Relics = new List<RelicData>(character.StartingRelics);

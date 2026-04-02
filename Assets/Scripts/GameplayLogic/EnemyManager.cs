@@ -30,10 +30,13 @@ public class EnemyManager : MonoBehaviour
         EventBus.Unsubscribe<OnDamageDealt>(HandleDamageDealt);
     }
 
+    [SerializeField] private EnemyAnimatorUI _enemyAnimatorUI;
+
     public void SetEnemy(EnemyData enemy)
     {
         _currentEnemy = enemy;
         _currentHP = enemy.MaxHP;
+        _enemyAnimatorUI.SetupEnemy(enemy);
     }
  
     private void HandleTurnStarted(OnTurnStarted evt) 
@@ -61,7 +64,7 @@ public class EnemyManager : MonoBehaviour
         {
             float factor = Mathf.Round(Random.Range(_minFactor, _maxFactor) * 10f) / 10f;
 
-            factor = ApplyBias(factor, bias, laneIndex);
+            factor = Mathf.Floor(ApplyBias(factor, bias, laneIndex)); //EL FLOOR QUITA TODOS LOS DECIMALES - PLACEHOLDER
             terms.Add(factor);
         }
 
@@ -108,4 +111,6 @@ public class EnemyManager : MonoBehaviour
     // UI reads this to render the equation for a given lane
     public List<float> GetLaneEquation(int laneIndex) => _laneEquations[laneIndex];
     public float GetCurrentHP() => _currentHP;
+
+    public EnemyData GetCurrentEnemy() => _currentEnemy;
 }
