@@ -8,13 +8,14 @@ public class PlayerHPUI : MonoBehaviour
     void OnEnable()
     {
         EventBus.Subscribe<OnDamageDealt>(HandleDamageDealt);
+        EventBus.Subscribe<OnTurnStarted>(HandleTurnStarted);
     }
 
     void OnDisable()
     {
         EventBus.Unsubscribe<OnDamageDealt>(HandleDamageDealt);
+        EventBus.Unsubscribe<OnTurnStarted>(HandleTurnStarted);
     }
-
     void Start()
     {
         RefreshHP();
@@ -29,5 +30,10 @@ public class PlayerHPUI : MonoBehaviour
     private void RefreshHP()
     {
         _hpText.text = RunManager.Instance.PlayerHP + " / " + RunManager.Instance.PlayerMaxHP;
+    }
+
+    private void HandleTurnStarted(OnTurnStarted evt)
+    {
+        RefreshHP();
     }
 }

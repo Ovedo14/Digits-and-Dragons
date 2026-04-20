@@ -36,3 +36,5 @@ public struct OnRelicTriggered
 //Run flow
 public struct OnCombatCompleted { }
 public struct OnEventCompleted { }
+public struct OnPlayerWon { }
+public struct OnPlayerLost { }

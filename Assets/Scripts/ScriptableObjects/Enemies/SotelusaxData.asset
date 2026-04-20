@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0004572f1dd7a24281f98a34d21d09b, type: 3}
+  m_Name: SotelusaxData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  EnemySprite: {fileID: 3782158873545141688, guid: f156850e3bfd31e4d95cd2ea444f8b71, type: 3}
+  IdleAnimation: {fileID: 7400000, guid: 605fb1af6b00ffd40ae81739e882266b, type: 2}
+  AttackAnimation: {fileID: 7400000, guid: 605fb1af6b00ffd40ae81739e882266b, type: 2}
+  MaxHP: 120
+  Bias: 2

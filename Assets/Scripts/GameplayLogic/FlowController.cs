@@ -12,15 +12,30 @@ public class FlowController : MonoBehaviour
     [Header("Enemy Pool")]
     [SerializeField] private EnemyData[] _enemyPool;
 
+    [Header("Event Pool")]
+    [SerializeField] private GameEvent[] _eventPool;
+    [SerializeField] private EventUI _eventUI;
+
+    [Header("End Screens")]
+    [SerializeField] private GameObject _winScreen;
+    [SerializeField] private GameObject _loseScreen;
+
     void OnEnable()
     {
         EventBus.Subscribe<OnCombatCompleted>(HandleCombatCompleted);
+        EventBus.Subscribe<OnEventCompleted>(OnEventFinished);
+        EventBus.Subscribe<OnPlayerWon>(HandlePlayerWon);
+        EventBus.Subscribe<OnPlayerLost>(HandlePlayerLost);
     }
 
     void OnDisable()
     {
         EventBus.Unsubscribe<OnCombatCompleted>(HandleCombatCompleted);
+        EventBus.Unsubscribe<OnEventCompleted>(OnEventFinished);
+        EventBus.Unsubscribe<OnPlayerWon>(HandlePlayerWon);
+        EventBus.Unsubscribe<OnPlayerLost>(HandlePlayerLost);
     }
+
 
     void Start()
     {
@@ -28,17 +43,27 @@ public class FlowController : MonoBehaviour
         StartNextCombat();
     }
 
+    private void HandlePlayerWon(OnPlayerWon evt)
+    {
+        _winScreen.SetActive(true);
+    }
+
+    private void HandlePlayerLost(OnPlayerLost evt)
+    {
+        _loseScreen.SetActive(true);
+    }
+
     private void HandleCombatCompleted(OnCombatCompleted evt)
     {
         RunManager.Instance.CombatCount++;
-        ShowEvent();
+        ShowRandomEvent();
     }
 
-    // Called by your Canvas Button on the event screen
-    public void OnEventFinished()
+    //Called by Canvas Button on the event screen
+    private void OnEventFinished(OnEventCompleted evt)
     {
-        ShowCombat();
         StartNextCombat();
+        ShowCombat();
     }
 
     private void StartNextCombat()
@@ -54,6 +79,12 @@ public class FlowController : MonoBehaviour
         _eventScreen.SetActive(false);
     }
 
+    private void ShowRandomEvent()
+    {
+        GameEvent randomEvent = _eventPool[Random.Range(0, _eventPool.Length)];
+        _eventUI.ShowEvent(randomEvent);
+        ShowEvent();
+    }
     private void ShowEvent()
     {
         _eventScreen.SetActive(true);

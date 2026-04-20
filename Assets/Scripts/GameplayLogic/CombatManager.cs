@@ -44,6 +44,18 @@ public class CombatManager : MonoBehaviour
     private void HandleCombatEnded(OnCombatEnded evt)
     {
         _combatActive = false;
-        EventBus.Publish(new OnCombatCompleted());
+        
+        if (!evt.PlayerWon)
+        {
+            EventBus.Publish(new OnPlayerLost());
+        }
+        else if (RunManager.Instance.IsFinalBoss)
+        {
+            EventBus.Publish(new OnPlayerWon());
+        }
+        else
+        {
+            EventBus.Publish(new OnCombatCompleted());
+        }
     }
 }

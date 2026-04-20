@@ -10,12 +10,14 @@ public class EnemyHPUI : MonoBehaviour
     {
         EventBus.Subscribe<OnDamageDealt>(HandleDamageDealt);
         EventBus.Subscribe<OnCombatCompleted>(HandleCombatCompleted);
+        EventBus.Subscribe<OnTurnStarted>(HandleTurnStarted);
     }
 
     void OnDisable()
     {
         EventBus.Unsubscribe<OnDamageDealt>(HandleDamageDealt);
         EventBus.Unsubscribe<OnCombatCompleted>(HandleCombatCompleted);
+        EventBus.Unsubscribe<OnTurnStarted>(HandleTurnStarted);
     }
 
     void Start()
@@ -36,6 +38,15 @@ public class EnemyHPUI : MonoBehaviour
 
     private void RefreshHP()
     {
-        _hpText.text = _enemyManager.GetCurrentHP() + " / " + _enemyManager.GetCurrentEnemy().MaxHP;
+        float currentHP = _enemyManager.GetCurrentHP();
+        float maxHP = _enemyManager.GetCurrentEnemy().MaxHP;
+        Debug.Log($"Enemy HP: {currentHP} / {maxHP}");
+        _hpText.text = currentHP + " / " + maxHP;
+    }
+
+    private void HandleTurnStarted(OnTurnStarted evt)
+    {
+        Debug.Log("OnTurnStarted received in EnemyHPUI");
+        RefreshHP();
     }
 }
