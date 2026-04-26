@@ -38,3 +38,4 @@ public struct OnCombatCompleted { }
 public struct OnEventCompleted { }
 public struct OnPlayerWon { }
 public struct OnPlayerLost { }
+public struct OnEnemyEquationsGenerated { }

@@ -5,18 +5,17 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LaneManager _laneManager;
-
-    [Header("Equation Settings")]
-    [SerializeField] private int _minTerms = 2;
-    [SerializeField] private int _maxTerms = 3;
-    [SerializeField] private float _minFactor = 1;
-    [SerializeField] private float _maxFactor = 5;
+    [SerializeField] private EnemyAnimatorUI _enemyAnimatorUI;
 
     private EnemyData _currentEnemy;
     private int _currentHP;
+    private LaneEquation[] _laneEquations = new LaneEquation[3];
 
-    //Stores the equation components per lane for the UI
-    private List<float>[] _laneEquations = new List<float>[3];
+    void Awake()
+    {
+        for (int i = 0; i < 3; i++)
+            _laneEquations[i] = new LaneEquation(OperationType.Add, new List<float>());
+    }
 
     void OnEnable()
     {
@@ -30,17 +29,16 @@ public class EnemyManager : MonoBehaviour
         EventBus.Unsubscribe<OnDamageDealt>(HandleDamageDealt);
     }
 
-    [SerializeField] private EnemyAnimatorUI _enemyAnimatorUI;
-
     public void SetEnemy(EnemyData enemy)
     {
         _currentEnemy = enemy;
         _currentHP = enemy.MaxHP;
         _enemyAnimatorUI.SetupEnemy(enemy);
     }
- 
-    private void HandleTurnStarted(OnTurnStarted evt) 
-    { 
+
+    private void HandleTurnStarted(OnTurnStarted evt)
+    {
+        Debug.Log("EnemyManager received OnTurnStarted");
         GenerateLaneValues();
     }
 
@@ -48,69 +46,118 @@ public class EnemyManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            _laneEquations[i] = GenerateEquation(_currentEnemy.Bias, i);
-
+            OperationType opType = PickOperationType(_currentEnemy.Operation);
+            _laneEquations[i] = GenerateEquation(_currentEnemy.Bias, opType, i);
+            
             float laneTotal = CalculateTotal(_laneEquations[i]);
             _laneManager.SetEnemyValue(i, laneTotal);
+
+            Debug.Log("Publishing OnEnemyEquationsGenerated");
+            EventBus.Publish(new OnEnemyEquationsGenerated());
         }
     }
 
-    private List<float> GenerateEquation(LaneBias bias, int laneIndex)
+    private OperationType PickOperationType(OperationType enemyOp)
+    {
+        if (enemyOp == OperationType.All)
+        {
+            OperationType[] allTypes = { OperationType.Add, OperationType.Mult, OperationType.Div };
+            return allTypes[Random.Range(0, allTypes.Length)];
+        }
+        return enemyOp;
+    }
+
+    private LaneEquation GenerateEquation(LaneBias bias, OperationType opType, int laneIndex)
     {
         List<float> terms = new List<float>();
-        int termCount = Random.Range(_minTerms, _maxTerms + 1);
 
-        for (int i = 0; i < termCount; i++)
+        switch (opType)
         {
-            float factor = Mathf.Round(Random.Range(_minFactor, _maxFactor) * 10f) / 10f;
+            case OperationType.Add:
+                AdditionSettings addSettings = _currentEnemy.AddSettings;
+                int addTerms = Random.Range(addSettings.MinTerms, addSettings.MaxTerms + 1);
+                for (int i = 0; i < addTerms; i++)
+                {
+                    float value = Random.Range(addSettings.MinValue, addSettings.MaxValue);
+                    value = Mathf.Floor(ApplyBias(value, bias, laneIndex));
+                    terms.Add(value);
+                }
+                break;
 
-            factor = Mathf.Floor(ApplyBias(factor, bias, laneIndex)); //EL FLOOR QUITA TODOS LOS DECIMALES - PLACEHOLDER
-            terms.Add(factor);
+            case OperationType.Mult:
+                MultiplicationSettings multSettings = _currentEnemy.MultSettings;
+                int multTerms = Random.Range(multSettings.MinTerms, multSettings.MaxTerms + 1);
+                for (int i = 0; i < multTerms; i++)
+                {
+                    float value = Random.Range(multSettings.MinValue, multSettings.MaxValue);
+                    value = Mathf.Floor(ApplyBias(value, bias, laneIndex));
+                    terms.Add(value);
+                }
+                break;
+
+            case OperationType.Div:
+                DivisionSettings divSettings = _currentEnemy.DivSettings;
+                float dividend = Random.Range(divSettings.MinDividend, divSettings.MaxDividend);
+                float divisor = Random.Range(divSettings.MinDivisor, divSettings.MaxDivisor);
+                
+                dividend = Mathf.Floor(ApplyBias(dividend, bias, laneIndex));
+                divisor = Mathf.Max(1, Mathf.Floor(divisor));
+                
+                terms.Add(dividend);
+                terms.Add(divisor);
+                break;
         }
 
-        return terms;
+        return new LaneEquation(opType, terms);
     }
 
     private float ApplyBias(float factor, LaneBias bias, int laneIndex)
     {
         switch (bias)
         {
-            //Aggressive - attacks heavily in one lane
             case LaneBias.Aggressive:
                 return laneIndex == 0 ? factor * 1.5f : factor * 0.75f;
-
-            //Defensive - spreads evenly with nerfed damage
             case LaneBias.Defensive:
                 return factor * 0.9f;
-
-            //Balanced - no modification to generated equation
             case LaneBias.Balanced:
             default:
                 return factor;
         }
     }
 
-    private float CalculateTotal(List<float> terms)
+    private float CalculateTotal(LaneEquation equation)
     {
-        float total = 1;
-        foreach (float term in terms)
-            total *= term;
-        return total;
+        switch (equation.OpType)
+        {
+            case OperationType.Add:
+                float sum = 0;
+                foreach (float term in equation.Terms)
+                    sum += term;
+                return sum;
+
+            case OperationType.Mult:
+                float product = 1;
+                foreach (float term in equation.Terms)
+                    product *= term;
+                return product;
+
+            case OperationType.Div:
+                return equation.Terms[0] / equation.Terms[1];
+
+            default:
+                return 0;
+        }
     }
 
     private void HandleDamageDealt(OnDamageDealt evt)
     {
         if (evt.ToPlayer) return;
-
         _currentHP -= (int)evt.Amount;
-
         if (_currentHP <= 0)
             EventBus.Publish(new OnCombatEnded { PlayerWon = true });
     }
 
-    // UI reads this to render the equation for a given lane
-    public List<float> GetLaneEquation(int laneIndex) => _laneEquations[laneIndex];
+    public LaneEquation GetLaneEquation(int laneIndex) => _laneEquations[laneIndex];
     public float GetCurrentHP() => _currentHP;
-
     public EnemyData GetCurrentEnemy() => _currentEnemy;
 }

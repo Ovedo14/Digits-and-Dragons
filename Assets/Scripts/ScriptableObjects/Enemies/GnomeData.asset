@@ -17,3 +17,4 @@ MonoBehaviour:
   AttackAnimation: {fileID: 6720303635017113406, guid: 33b8511f21048d643baf47533acd47fb, type: 3}
   MaxHP: 16
   Bias: 0
+  Operation: 3

@@ -15,4 +15,23 @@ public class EnemyData : ScriptableObject
 
     [Header("Behavior")]
     public LaneBias Bias;
+
+    [Header("Operation")]
+    public OperationType Operation;
+
+    [Header("Equation Balance")]
+    public AdditionSettings AddSettings = new AdditionSettings 
+    { 
+        MinTerms = 2, MaxTerms = 4, MinValue = 1, MaxValue = 10 
+    };
+    
+    public MultiplicationSettings MultSettings = new MultiplicationSettings 
+    { 
+        MinTerms = 2, MaxTerms = 3, MinValue = 2, MaxValue = 4 
+    };
+    
+    public DivisionSettings DivSettings = new DivisionSettings 
+    { 
+        MinDividend = 10, MaxDividend = 30, MinDivisor = 2, MaxDivisor = 5 
+    };
 }

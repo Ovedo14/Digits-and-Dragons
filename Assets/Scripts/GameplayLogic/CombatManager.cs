@@ -25,7 +25,9 @@ public class CombatManager : MonoBehaviour
     private void StartTurn()
     {
         if (!_combatActive) return;
+        Debug.Log("Publishing OnTurnStarted");
         EventBus.Publish(new OnTurnStarted());
+        
     }
 
     public void EndTurn()

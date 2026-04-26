@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +10,9 @@ public class SequentialHide : MonoBehaviour
 
     public void GoNext()
     {
-        if (currentIndex < elements.Length)
+        if (currentIndex < elements.Length - 1)
         {
+            Debug.Log("pressed");
             elements[currentIndex].SetActive(false);
             currentIndex++;
         }

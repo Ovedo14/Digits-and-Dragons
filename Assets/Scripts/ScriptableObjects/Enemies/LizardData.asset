@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0004572f1dd7a24281f98a34d21d09b, type: 3}
+  m_Name: LizardData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  EnemySprite: {fileID: -4070170667557269686, guid: 44c92d27bdf1a35419d3854b91a6aa0a, type: 3}
+  IdleAnimation: {fileID: -3100369314251171874, guid: 9a4023fa27aa75f4b8f01f01be4f85f6, type: 3}
+  AttackAnimation: {fileID: 6720303635017113406, guid: 9a4023fa27aa75f4b8f01f01be4f85f6, type: 3}
+  MaxHP: 43
+  Bias: 1
+  Operation: 0

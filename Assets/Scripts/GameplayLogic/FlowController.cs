@@ -10,7 +10,8 @@ public class FlowController : MonoBehaviour
     [SerializeField] private GameObject _eventScreen;
 
     [Header("Enemy Pool")]
-    [SerializeField] private EnemyData[] _enemyPool;
+    [SerializeField] private EnemyStagePool[] _enemyStages;
+    [SerializeField] private EnemyData _bossEnemy;
 
     [Header("Event Pool")]
     [SerializeField] private GameEvent[] _eventPool;
@@ -94,8 +95,14 @@ public class FlowController : MonoBehaviour
     private EnemyData PickNextEnemy()
     {
         if (RunManager.Instance.IsFinalBoss)
-            return _enemyPool[_enemyPool.Length - 1];
+            return _bossEnemy;
 
-        return _enemyPool[Random.Range(0, _enemyPool.Length - 1)];
+        int stageIndex = RunManager.Instance.CombatCount;
+
+        stageIndex = Mathf.Clamp(stageIndex, 0, _enemyStages.Length - 1);
+
+        EnemyData[] pool = _enemyStages[stageIndex].enemies;
+
+        return pool[Random.Range(0, pool.Length)];
     }
 }

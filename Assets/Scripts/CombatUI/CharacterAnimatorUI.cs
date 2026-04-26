@@ -21,6 +21,11 @@ public class CharacterAnimatorUI : MonoBehaviour
         _overrideController["Attack"] = character.AttackAnimation;
     }
 
+     private void HandleDamageDealt(OnDamageDealt evt)
+    {
+        if (!evt.ToPlayer) return;
+        PlayAttack();
+    }
     public void PlayAttack()
     {
         _animator.SetTrigger("Attack");

@@ -349,13 +349,18 @@ MonoBehaviour:
   _enemyManager: {fileID: 1225260327}
   _combatScreen: {fileID: 589175744}
   _eventScreen: {fileID: 1870133551}
-  _enemyPool:
-  - {fileID: 11400000, guid: 7a4926b4826348140b818bef59d5a579, type: 2}
-  - {fileID: 11400000, guid: 7c60c2f95b6d0bb4199db3eb40d05bd7, type: 2}
-  - {fileID: 11400000, guid: 08de4fb283ace11409ddfec6e9ae66ed, type: 2}
-  - {fileID: 11400000, guid: 98352b15f8809f846a17f8a8c12d56d6, type: 2}
-  - {fileID: 11400000, guid: b7ac07ed8125f8240b594c8fc06e28cf, type: 2}
-  - {fileID: 11400000, guid: 5e557b53bc8790d43a66cceba7590834, type: 2}
+  _enemyStages:
+  - enemies:
+    - {fileID: 11400000, guid: 7a4926b4826348140b818bef59d5a579, type: 2}
+    - {fileID: 11400000, guid: b7ac07ed8125f8240b594c8fc06e28cf, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: 08de4fb283ace11409ddfec6e9ae66ed, type: 2}
+    - {fileID: 11400000, guid: 1fd108b79c3e48f4ba72ff15c4c914b8, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: 7c60c2f95b6d0bb4199db3eb40d05bd7, type: 2}
+    - {fileID: 11400000, guid: 5adc0bd59635eed4786720734573d0bc, type: 2}
+    - {fileID: 11400000, guid: 98352b15f8809f846a17f8a8c12d56d6, type: 2}
+  _bossEnemy: {fileID: 11400000, guid: 5e557b53bc8790d43a66cceba7590834, type: 2}
   _eventPool:
   - {fileID: 11400000, guid: 153b1bbdc550f224f851f53442facf0d, type: 2}
   _eventUI: {fileID: 1870133553}
@@ -1444,8 +1449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -281, y: -133}
-  m_SizeDelta: {x: 134.89, y: 84.94}
+  m_AnchoredPosition: {x: -269.88998, y: -133}
+  m_SizeDelta: {x: 172.02, y: 84.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291891530
 MonoBehaviour:
@@ -3305,8 +3310,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -181.5, y: 96.2}
-  m_SizeDelta: {x: 134.89, y: 84.94}
+  m_AnchoredPosition: {x: -143, y: 96.2}
+  m_SizeDelta: {x: 172.02, y: 84.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860998305
 MonoBehaviour:
@@ -3999,6 +4004,7 @@ MonoBehaviour:
   _animator: {fileID: 1082984294}
   _spriteRenderer: {fileID: 1082984291}
   _enemyManager: {fileID: 1225260327}
+  _bossOffset: {x: 4.2, y: 0.5}
 --- !u!95 &1082984294
 Animator:
   serializedVersion: 7
@@ -4649,10 +4655,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   _laneManager: {fileID: 595355443}
-  _minTerms: 2
-  _maxTerms: 3
-  _minFactor: 1
-  _maxFactor: 5
   _enemyAnimatorUI: {fileID: 1082984293}
 --- !u!1 &1253434404
 GameObject:
@@ -4789,14 +4791,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c221214031cebd4c9ae55b41e16e193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeckManager
-  _handSize: 4
-  _operationSettings:
-  - Operation: 0
-    MinValue: 1
-    MaxValue: 20
-  - Operation: 1
-    MinValue: 1
-    MaxValue: 3
+  _handSize: 5
+  _guaranteedAdditions: 3
+  _enemyManager: {fileID: 1225260327}
+  _additionPercentOfThreat: 0.5
+  _multiplyMin: 1.5
+  _multiplyMax: 3
   _cardPool:
   - {fileID: 11400000, guid: 743f73508d3f7f244ba246a5988a62a5, type: 2}
   - {fileID: 11400000, guid: 7f7e4c0fb31bfff44bc1863cf5d54968, type: 2}
@@ -5364,8 +5364,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282409727
-  m_fontColor: {r: 1, g: 0.3836946, b: 0.2520215, a: 1}
+    rgba: 4278199236
+  m_fontColor: {r: 0.76819396, g: 0.13674657, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7107,8 +7107,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -232, y: -18}
-  m_SizeDelta: {x: 134.89, y: 84.94}
+  m_AnchoredPosition: {x: -207.40999, y: -18}
+  m_SizeDelta: {x: 172.02, y: 84.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754183517
 MonoBehaviour:
@@ -8618,8 +8618,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282409727
-  m_fontColor: {r: 1, g: 0.3836946, b: 0.2520215, a: 1}
+    rgba: 4278199236
+  m_fontColor: {r: 0.76819396, g: 0.13674657, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9271,8 +9271,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282409727
-  m_fontColor: {r: 1, g: 0.3836946, b: 0.2520215, a: 1}
+    rgba: 4278199236
+  m_fontColor: {r: 0.76819396, g: 0.13674657, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

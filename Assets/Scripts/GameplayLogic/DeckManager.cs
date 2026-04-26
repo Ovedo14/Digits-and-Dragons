@@ -1,73 +1,114 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable]
-public struct CardGenerationSettings  //min and max values are unique for card types for balance
-{
-    public CardOperation Operation;
-    public float MinValue;
-    public float MaxValue;
-}
-
 public class DeckManager : MonoBehaviour
 {
     [Header("Hand Settings")]
     [SerializeField] private int _handSize = 5;
+    [SerializeField] private int _guaranteedAdditions = 3;
 
-    [Header("Card Generation")]
-    [SerializeField] private List<CardGenerationSettings> _operationSettings = new List<CardGenerationSettings>
-    {
-        new CardGenerationSettings { Operation = CardOperation.Add,      MinValue = 1,   MaxValue = 20  },
-        new CardGenerationSettings { Operation = CardOperation.Multiply, MinValue = 1,   MaxValue = 3   }
-    };
+    [Header("References")]
+    [SerializeField] private EnemyManager _enemyManager;
 
-    [SerializeField] private List<CardData> _cardPool; //List of cards to generate from (only card type and sprite, can be changed by enemy)
+    [Header("Balance Scaling")]
+    [SerializeField] private float _additionPercentOfThreat = 0.7f; //each add ~n% of avg threat
+    [SerializeField] private float _multiplyMin = 1.5f;
+    [SerializeField] private float _multiplyMax = 3f;
+
+    [SerializeField] private List<CardData> _cardPool;
     private List<CardData> _hand = new List<CardData>();
 
-    void OnEnable()
-    {
-        EventBus.Subscribe<OnTurnStarted>(HandleTurnStarted);
-    }
-    void OnDisable() 
-    { 
-        EventBus.Unsubscribe<OnTurnStarted>(HandleTurnStarted);
-    }
+    void OnEnable() => EventBus.Subscribe<OnEnemyEquationsGenerated>(HandleEnemyEquationsGenerated);
+    void OnDisable() => EventBus.Unsubscribe<OnEnemyEquationsGenerated>(HandleEnemyEquationsGenerated);
 
-    private void HandleTurnStarted(OnTurnStarted evt)
-    {
-        GenerateHand();  
-    } 
+    private void HandleEnemyEquationsGenerated(OnEnemyEquationsGenerated evt) => GenerateHand();
 
     private void GenerateHand()
     {
         _hand.Clear();
 
-        for (int i = 0; i < _handSize; i++)
+        float averageThreat = CalculateAverageThreat();
+
+        //guarantee drawing additions first
+        for (int i = 0; i < _guaranteedAdditions; i++)
         {
-            CardData template = _cardPool[Random.Range(0, _cardPool.Count)];
-            CardGenerationSettings settings = GetSettingsFor(template.Operation);
+            CardData card = GenerateContextualCard(CardOperation.Add, averageThreat);
+            _hand.Add(card);
+        }
 
-            CardData card = ScriptableObject.CreateInstance<CardData>();
-            card.Operation = template.Operation;
-            card.Artwork = template.Artwork;
-            card.Value = Mathf.Round(Random.Range(settings.MinValue, settings.MaxValue) * 10f) / 10f; //un decimal maximo
-
+        //fill rest randomly
+        for (int i = _guaranteedAdditions; i < _handSize; i++)
+        {
+            CardOperation operation = Random.value > 0.5f ? CardOperation.Add : CardOperation.Multiply;
+            CardData card = GenerateContextualCard(operation, averageThreat);
             _hand.Add(card);
         }
     }
 
-    private CardGenerationSettings GetSettingsFor(CardOperation operation)
+    private float CalculateAverageThreat()
     {
-        foreach (var setting in _operationSettings)
-            if (setting.Operation == operation) return setting;
+        float total = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            LaneEquation eq = _enemyManager.GetLaneEquation(i);
+            total += CalculateEquationValue(eq);
+        }
+        return total / 3f;
+    }
 
-        //default para que no se mate todo si no encuentra un setting
-        return new CardGenerationSettings { Operation = operation, MinValue = 1, MaxValue = 2 };
+    private float CalculateEquationValue(LaneEquation equation)
+    {
+        switch (equation.OpType)
+        {
+            case OperationType.Add:
+                float sum = 0;
+                foreach (float term in equation.Terms)
+                    sum += term;
+                return sum;
+
+            case OperationType.Mult:
+                float product = 1;
+                foreach (float term in equation.Terms)
+                    product *= term;
+                return product;
+
+            case OperationType.Div:
+                return equation.Terms[0] / equation.Terms[1];
+
+            default:
+                return 0;
+        }
+    }
+
+    private CardData GenerateContextualCard(CardOperation operation, float averageThreat)
+    {
+        CardData template = _cardPool.Find(c => c.Operation == operation);
+        if (template == null) template = _cardPool[0];
+
+        CardData card = ScriptableObject.CreateInstance<CardData>();
+        card.Operation = operation;
+        card.Artwork = template.Artwork;
+
+        switch (operation)
+        {
+            case CardOperation.Add:
+                //balances depending on enemy attack
+                float addMin = averageThreat * _additionPercentOfThreat * 0.7f;
+                float addMax = averageThreat * _additionPercentOfThreat * 1.3f;
+                card.Value = Mathf.Max(1, Mathf.Round(Random.Range(addMin, addMax)));
+                break;
+
+            case CardOperation.Multiply:
+                card.Value = Mathf.Round(Random.Range(_multiplyMin, _multiplyMax) * 10f) / 10f;
+                break;
+        }
+
+        return card;
     }
 
     public void PlayCard(int handIndex, int laneIndex)
     {
-        if (handIndex < 0 || handIndex >= _hand.Count) return; //default para que no se mate todo por alguna razon
+        if (handIndex < 0 || handIndex >= _hand.Count) return;
 
         CardData card = _hand[handIndex];
         _hand.RemoveAt(handIndex);
