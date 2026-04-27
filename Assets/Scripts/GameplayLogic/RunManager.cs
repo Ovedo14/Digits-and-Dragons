@@ -9,6 +9,7 @@ public class RunManager : MonoBehaviour
     public float PlayerHP;
     public float PlayerMaxHP;
     public List<RelicData> Relics = new List<RelicData>();
+    public int Gold = 0;
     public int CombatCount = 0;
 
     [Header("Boss Settings")]

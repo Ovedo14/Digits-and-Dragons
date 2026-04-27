@@ -34,4 +34,9 @@ public class EnemyData : ScriptableObject
     { 
         MinDividend = 10, MaxDividend = 30, MinDivisor = 2, MaxDivisor = 5 
     };
+
+    [Header("Rewards")]
+    public int GoldReward = 10;
+    public float HealthReward = 5;
+    public RelicData RelicDrop;
 }

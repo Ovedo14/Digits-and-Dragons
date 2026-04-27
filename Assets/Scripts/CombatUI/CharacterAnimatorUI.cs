@@ -7,11 +7,21 @@ public class CharacterAnimatorUI : MonoBehaviour
 
     private AnimatorOverrideController _overrideController;
 
+    void OnEnable()
+    {
+        EventBus.Subscribe<OnDamageDealt>(HandleDamageDealt);
+    }
+
+    void OnDisable()
+    {
+        EventBus.Unsubscribe<OnDamageDealt>(HandleDamageDealt);
+    }
+
     void Start()
     {
         CharacterData character = RunManager.Instance.CurrentCharacter;
 
-        _spriteRenderer.sprite = character.CharacterSprite; //Static Sprite
+        _spriteRenderer.sprite = character.CharacterSprite;
 
         //Create an override controller and swap animations
         _overrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);

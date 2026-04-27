@@ -6,13 +6,13 @@ public class CombatManager : MonoBehaviour
 
     void OnEnable()
     {
-        EventBus.Subscribe<OnLanesResolved>(HandleLanesResolved);
+        EventBus.Subscribe<OnFeedbackComplete>(HandleFeedbackComplete);
         EventBus.Subscribe<OnCombatEnded>(HandleCombatEnded);
     }
 
     void OnDisable()
     {
-        EventBus.Unsubscribe<OnLanesResolved>(HandleLanesResolved);
+        EventBus.Unsubscribe<OnFeedbackComplete>(HandleFeedbackComplete);
         EventBus.Unsubscribe<OnCombatEnded>(HandleCombatEnded);
     }
 
@@ -36,9 +36,8 @@ public class CombatManager : MonoBehaviour
         EventBus.Publish(new OnTurnEnded());
     }
 
-    private void HandleLanesResolved(OnLanesResolved evt)
+    private void HandleFeedbackComplete(OnFeedbackComplete evt)
     {
-        //Just checks if combat isnt over since LaneManager handles damage
         if (_combatActive)
             StartTurn();
     }

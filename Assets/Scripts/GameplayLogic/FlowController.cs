@@ -8,6 +8,7 @@ public class FlowController : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private GameObject _combatScreen;
     [SerializeField] private GameObject _eventScreen;
+    [SerializeField] private GameObject _rewardScreen;
 
     [Header("Enemy Pool")]
     [SerializeField] private EnemyStagePool[] _enemyStages;
@@ -20,6 +21,8 @@ public class FlowController : MonoBehaviour
     [Header("End Screens")]
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private GameObject _loseScreen;
+    [Header("Reward")]
+    [SerializeField] private RewardScreenUI _rewardUI;
 
     void OnEnable()
     {
@@ -27,6 +30,7 @@ public class FlowController : MonoBehaviour
         EventBus.Subscribe<OnEventCompleted>(OnEventFinished);
         EventBus.Subscribe<OnPlayerWon>(HandlePlayerWon);
         EventBus.Subscribe<OnPlayerLost>(HandlePlayerLost);
+        EventBus.Subscribe<OnRewardsClaimed>(HandleRewardsClaimed);
     }
 
     void OnDisable()
@@ -35,6 +39,7 @@ public class FlowController : MonoBehaviour
         EventBus.Unsubscribe<OnEventCompleted>(OnEventFinished);
         EventBus.Unsubscribe<OnPlayerWon>(HandlePlayerWon);
         EventBus.Unsubscribe<OnPlayerLost>(HandlePlayerLost);
+        EventBus.Unsubscribe<OnRewardsClaimed>(HandleRewardsClaimed);
     }
 
 
@@ -57,6 +62,11 @@ public class FlowController : MonoBehaviour
     private void HandleCombatCompleted(OnCombatCompleted evt)
     {
         RunManager.Instance.CombatCount++;
+        ShowRewards();
+    }
+
+    private void HandleRewardsClaimed(OnRewardsClaimed evt)
+    {
         ShowRandomEvent();
     }
 
@@ -78,6 +88,15 @@ public class FlowController : MonoBehaviour
     {
         _combatScreen.SetActive(true);
         _eventScreen.SetActive(false);
+        _rewardScreen.SetActive(false);
+    }
+
+    private void ShowRewards()
+    {
+        _rewardUI.ShowRewards(_enemyManager.GetCurrentEnemy());
+        _rewardScreen.SetActive(true);
+        _combatScreen.SetActive(true);
+        _eventScreen.SetActive(false);
     }
 
     private void ShowRandomEvent()
@@ -90,6 +109,7 @@ public class FlowController : MonoBehaviour
     {
         _eventScreen.SetActive(true);
         _combatScreen.SetActive(false);
+        _rewardScreen.SetActive(false);
     }
 
     private EnemyData PickNextEnemy()
