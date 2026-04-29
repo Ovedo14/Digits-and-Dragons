@@ -16,7 +16,7 @@ MonoBehaviour:
   IdleAnimation: {fileID: -3100369314251171874, guid: caff9608f635908418403d56a546f9b0, type: 3}
   AttackAnimation: {fileID: -6185155371445809522, guid: caff9608f635908418403d56a546f9b0, type: 3}
   MaxHP: 42
-  Bias: 1
+  Bias: 2
   Operation: 1
   AddSettings:
     MinTerms: 2
@@ -33,6 +33,6 @@ MonoBehaviour:
     MaxDividend: 30
     MinDivisor: 2
     MaxDivisor: 5
-  GoldReward: 10
-  HealthReward: 5
+  GoldReward: 23
+  HealthReward: 12
   RelicDrop: {fileID: 0}

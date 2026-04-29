@@ -40,7 +40,6 @@ public class EnemyHPUI : MonoBehaviour
     {
         float currentHP = _enemyManager.GetCurrentHP();
         float maxHP = _enemyManager.GetCurrentEnemy().MaxHP;
-        Debug.Log($"Enemy HP: {currentHP} / {maxHP}");
         _hpText.text = currentHP + " / " + maxHP;
     }
 

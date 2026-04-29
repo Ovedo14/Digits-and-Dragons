@@ -17,7 +17,7 @@ MonoBehaviour:
     de apreciaci\xF3n por tu servicio al reino. \xC9stas poco seguro de la integridad
     de este hombre pero quiz\xE1s la poci\xF3n te ayudara en el futuro. \xBFQu\xE9
     decides hacer?"
-  EventImage: {fileID: 6242831123289951215, guid: 6e39c96bd9f25e647884fe5f32ac2761, type: 3}
+  EventImage: {fileID: -6464482783528114672, guid: 6e39c96bd9f25e647884fe5f32ac2761, type: 3}
   Options:
   - OptionText: "Tomar poci\xF3n."
     Effect: {fileID: 11400000, guid: 686d065d6340aff428f0a765a455a3ec, type: 2}

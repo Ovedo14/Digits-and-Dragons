@@ -438,8 +438,8 @@ GameObject:
   - component: {fileID: 7524487417963612804}
   - component: {fileID: 4380303793515360443}
   - component: {fileID: 3344514857291542505}
-  - component: {fileID: 2153508340397716930}
   - component: {fileID: 3747165921577657546}
+  - component: {fileID: 2941714710894173142}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8006537370685401482}
+      - m_Target: {fileID: 2941714710894173142}
         m_TargetAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
         m_MethodName: 
         m_Mode: 1
@@ -530,22 +530,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2153508340397716930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8745621799060311587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a8dd56237c3664591bed554d85148b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardUI
-  _artwork: {fileID: 0}
-  _operationText: {fileID: 0}
-  _valueText: {fileID: 0}
-  _button: {fileID: 0}
 --- !u!114 &3747165921577657546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,3 +560,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2941714710894173142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745621799060311587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eefd2131cff40e45863cd7e14b7f765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectCardSound

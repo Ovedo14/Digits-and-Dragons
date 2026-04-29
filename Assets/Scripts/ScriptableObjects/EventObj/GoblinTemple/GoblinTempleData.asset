@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3035fed62de3cc846bd573cbe14943ef, type: 3}
+  m_Name: GoblinTempleData
+  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
+  Title: Templo Goblinesco
+  Description: "Perdido en un bosque, encuentras un templo misterioso. decides investigar,
+    y encuentras una gema grande y radiante. Puedes observar trampas a lo alrededor\u2026"
+  EventImage: {fileID: 6553418477402450293, guid: 6e39c96bd9f25e647884fe5f32ac2761, type: 3}
+  Options:
+  - OptionText: 
+    Effect: {fileID: 11400000, guid: 22955f30ccf7ff84489f252cc327d69f, type: 2}
+  - OptionText: 'Salir del templo. '
+    Effect: {fileID: 11400000, guid: 22955f30ccf7ff84489f252cc327d69f, type: 2}

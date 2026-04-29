@@ -108,6 +108,10 @@ public class FlowController : MonoBehaviour
 
     private void StartNextCombat()
     {
+        if (RunManager.Instance.IsFinalBoss)
+            AudioManager.Instance.PlayBossMusic();
+        else
+            AudioManager.Instance.PlayCombatMusic();
         EnemyData enemy = PickNextEnemy();
         _enemyManager.SetEnemy(enemy);
         _combatManager.StartCombat();

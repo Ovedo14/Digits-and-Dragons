@@ -33,6 +33,11 @@ public struct OnRelicTriggered
     public RelicData Relic;
 }
 
+public struct OnRelicAdded
+{
+    public RelicData Relic;
+}
+
 //Run flow
 public struct OnCombatCompleted { }
 public struct OnEventCompleted { }
@@ -41,3 +46,4 @@ public struct OnPlayerLost { }
 public struct OnEnemyEquationsGenerated { }
 public struct OnFeedbackComplete { }
 public struct OnRewardsClaimed { }
+

@@ -6,6 +6,7 @@ public class EndTurnButtonUI : MonoBehaviour
 
     public void OnEndTurnPressed()
     {
+        AudioManager.Instance.PlayTurnEndClash();
         _combatManager.EndTurn();
     }
 }

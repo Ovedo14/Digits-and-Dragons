@@ -26,25 +26,36 @@ public class RelicManager : MonoBehaviour
         EventBus.Unsubscribe<OnDamageDealt>(HandleDamageDealt);
     }
 
+    
     private void HandleTurnStarted(OnTurnStarted evt) => 
         TriggerRelics(RelicTrigger.OnTurnStart);
 
     private void HandleTurnEnded(OnTurnEnded evt) => 
         TriggerRelics(RelicTrigger.OnTurnEnd);
 
-    private void HandleCardPlayed(OnCardPlayed evt) => 
-        TriggerRelics(RelicTrigger.OnCardPlayed);
+    private void HandleCardPlayed(OnCardPlayed evt)
+    {
+        TriggerRelics(RelicTrigger.OnCardPlayed, new RelicContext
+        {
+            LastCardPlayed = evt.Card,
+            LastLaneIndex = evt.LaneIndex
+        });
+    }
 
-    private void HandleDamageDealt(OnDamageDealt evt) => 
-        TriggerRelics(RelicTrigger.OnDamageDealt);
-
-    private void TriggerRelics(RelicTrigger trigger)
+    private void HandleDamageDealt(OnDamageDealt evt)
+    {
+        TriggerRelics(RelicTrigger.OnDamageDealt, new RelicContext
+        {
+            LastDamageAmount = evt.Amount
+        });
+    }
+    private void TriggerRelics(RelicTrigger trigger, RelicContext context = null)
     {
         foreach (RelicData relic in _activeRelics)
         {
             if (relic.Trigger != trigger) continue;
 
-            relic.ApplyEffect();
+            relic.ApplyEffect(context);
             EventBus.Publish(new OnRelicTriggered { Relic = relic });
         }
     }
@@ -53,5 +64,8 @@ public class RelicManager : MonoBehaviour
     {
         _activeRelics.Add(relic);
         RunManager.Instance.Relics.Add(relic);
+
+        relic.OnAcquire();
+        EventBus.Publish(new OnRelicAdded { Relic = relic });
     }
 }

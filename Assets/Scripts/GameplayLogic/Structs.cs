@@ -38,3 +38,11 @@ public struct DivisionSettings
     public float MinDivisor;
     public float MaxDivisor;
 }
+
+    public class RelicContext
+    {
+        public CardData LastCardPlayed;
+        public int LastLaneIndex;
+        public float LastDamageAmount;
+        
+    }

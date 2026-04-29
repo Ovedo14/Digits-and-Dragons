@@ -33,6 +33,6 @@ MonoBehaviour:
     MaxDividend: 30
     MinDivisor: 2
     MaxDivisor: 5
-  GoldReward: 10
-  HealthReward: 5
+  GoldReward: 104
+  HealthReward: 20
   RelicDrop: {fileID: 0}

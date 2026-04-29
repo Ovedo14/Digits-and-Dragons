@@ -36,6 +36,7 @@ public class EndScreenUI : MonoBehaviour
         if (RunManager.Instance != null)
             Destroy(RunManager.Instance.gameObject);
 
+        AudioManager.Instance.PlayMenuMusic();
         SceneManager.LoadScene(_mainMenuSceneName);
     }
 }

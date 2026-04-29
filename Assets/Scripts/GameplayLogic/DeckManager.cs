@@ -94,7 +94,7 @@ public class DeckManager : MonoBehaviour
             case CardOperation.Add:
                 //balances depending on enemy attack
                 float addMin = averageThreat * _additionPercentOfThreat * 0.7f;
-                float addMax = averageThreat * _additionPercentOfThreat * 1.3f;
+                float addMax = averageThreat * _additionPercentOfThreat * 1.4f;
                 card.Value = Mathf.Max(1, Mathf.Round(Random.Range(addMin, addMax)));
                 break;
 

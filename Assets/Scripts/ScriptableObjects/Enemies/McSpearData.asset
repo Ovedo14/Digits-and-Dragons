@@ -15,14 +15,14 @@ MonoBehaviour:
   EnemySprite: {fileID: -344423120149832840, guid: e5082aae59cfbcf43a0c911d21e59469, type: 3}
   IdleAnimation: {fileID: -3100369314251171874, guid: ac341c7c2538fb64e9f0ae7c9595a57a, type: 3}
   AttackAnimation: {fileID: -6185155371445809522, guid: ac341c7c2538fb64e9f0ae7c9595a57a, type: 3}
-  MaxHP: 0
-  Bias: 0
+  MaxHP: 68
+  Bias: 2
   Operation: 0
   AddSettings:
-    MinTerms: 2
+    MinTerms: 3
     MaxTerms: 4
-    MinValue: 1
-    MaxValue: 10
+    MinValue: 5
+    MaxValue: 16
   MultSettings:
     MinTerms: 2
     MaxTerms: 3
@@ -33,6 +33,6 @@ MonoBehaviour:
     MaxDividend: 30
     MinDivisor: 2
     MaxDivisor: 5
-  GoldReward: 10
-  HealthReward: 5
+  GoldReward: 49
+  HealthReward: 21
   RelicDrop: {fileID: 0}

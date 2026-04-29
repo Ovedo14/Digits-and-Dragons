@@ -6,7 +6,7 @@ public class EnemyAnimatorUI : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private EnemyManager _enemyManager;
 
-    [SerializeField] private Vector2 _bossOffset = new Vector2(4.2f, 0.5f);
+    [SerializeField] private Vector2 _bossOffset = new Vector2(10.11f, 0.61f);
 
 
     private AnimatorOverrideController _overrideController;
@@ -27,7 +27,8 @@ public class EnemyAnimatorUI : MonoBehaviour
 
         // Check if this is the final boss, adjusts if yes
         if (RunManager.Instance.IsFinalBoss) {
-            transform.localPosition = _bossOffset;
+            Debug.Log("Setting boss position to: " + _bossOffset);
+            transform.localPosition = new Vector3(_bossOffset.x, _bossOffset.y, transform.localPosition.z);
             transform.rotation = Quaternion.identity;
         }
 
