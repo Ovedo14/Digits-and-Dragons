@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0004572f1dd7a24281f98a34d21d09b, type: 3}
+  m_Name: SnakeData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  EnemySprite: {fileID: 7104874855621525860, guid: 38ba582278213e947a36fd044a038ccb, type: 3}
+  IdleAnimation: {fileID: -3100369314251171874, guid: 9b2c30c76f2018240bf3a3b2939af112, type: 3}
+  AttackAnimation: {fileID: 6720303635017113406, guid: 9b2c30c76f2018240bf3a3b2939af112, type: 3}
+  MaxHP: 18
+  Bias: 0
+  Operation: 0
+  AddSettings:
+    MinTerms: 3
+    MaxTerms: 4
+    MinValue: 1
+    MaxValue: 5
+  MultSettings:
+    MinTerms: 3
+    MaxTerms: 4
+    MinValue: 1
+    MaxValue: 5
+  DivSettings:
+    MinDividend: 10
+    MaxDividend: 30
+    MinDivisor: 2
+    MaxDivisor: 5
+  GoldReward: 8
+  HealthReward: 5
+  RelicDrop: {fileID: 0}

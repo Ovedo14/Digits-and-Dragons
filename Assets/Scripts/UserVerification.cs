@@ -15,31 +15,21 @@ public class UserVerification : MonoBehaviour
     [SerializeField] public GameObject errorMessage;
     [SerializeField] private SceneLoader sceneLoader;
 
-    private string url = "https://xuofr6tvbbaa5fjag25qnx4kka0sxjgr.lambda-url.us-east-1.on.aws/";
+    private string url = "https://g4nu3hhvegj3hxyrkuvswr6yue0zgppb.lambda-url.us-east-1.on.aws/";
 
     [System.Serializable]
     public class LoginData
     {
-        public string username;
-        public string password;
-    }
-
-    [System.Serializable]
-    public class Usuario
-    {
-        public int id;
-        public string nombre;
-        public string rol;
+        public string user;
+        public string pwrd;
     }
 
     [System.Serializable]
     public class ResponseData
     {
         public bool success;
-        public string token;
-        public Usuario usuario;
+        public int id_jugador;
     }
-
     public void SendLogin()
     {
         StartCoroutine(LoginCoroutine());
@@ -49,8 +39,8 @@ public class UserVerification : MonoBehaviour
     {
         LoginData loginData = new LoginData
         {
-            username = usernameInput.text,
-            password = passwordInput.text
+            user = usernameInput.text,
+            pwrd = passwordInput.text
         };
 
         string json = JsonUtility.ToJson(loginData);
@@ -82,6 +72,8 @@ public class UserVerification : MonoBehaviour
         if (response != null && response.success)
         {
             Debug.Log("Login successful!");
+            PlayerPrefs.SetInt("player_id", response.id_jugador);
+            PlayerPrefs.Save();
             sceneLoader.FadeAndLoadScene("Menu");
         }
         else

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0004572f1dd7a24281f98a34d21d09b, type: 3}
+  m_Name: MinotaursData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  EnemySprite: {fileID: 1493461491694850562, guid: 5c24cf017f0612541b3cd83612ac6836, type: 3}
+  IdleAnimation: {fileID: -3100369314251171874, guid: b687d0d7dc416f542b4d1f3c24a5de0d, type: 3}
+  AttackAnimation: {fileID: 6720303635017113406, guid: b687d0d7dc416f542b4d1f3c24a5de0d, type: 3}
+  MaxHP: 70
+  Bias: 0
+  Operation: 1
+  AddSettings:
+    MinTerms: 2
+    MaxTerms: 4
+    MinValue: 1
+    MaxValue: 10
+  MultSettings:
+    MinTerms: 2
+    MaxTerms: 3
+    MinValue: 2
+    MaxValue: 4
+  DivSettings:
+    MinDividend: 10
+    MaxDividend: 30
+    MinDivisor: 2
+    MaxDivisor: 5
+  GoldReward: 10
+  HealthReward: 5
+  RelicDrop: {fileID: 0}

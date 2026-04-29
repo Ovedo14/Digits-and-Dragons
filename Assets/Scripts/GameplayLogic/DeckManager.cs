@@ -11,7 +11,7 @@ public class DeckManager : MonoBehaviour
     [SerializeField] private EnemyManager _enemyManager;
 
     [Header("Balance Scaling")]
-    [SerializeField] private float _additionPercentOfThreat = 0.8f; //each add ~n% of avg threat
+    [SerializeField] private float _additionPercentOfThreat = 0.7f; //each add ~n% of avg threat
     [SerializeField] private float _multiplyMin = 1.5f;
     [SerializeField] private float _multiplyMax = 3f;
 
@@ -93,8 +93,8 @@ public class DeckManager : MonoBehaviour
         {
             case CardOperation.Add:
                 //balances depending on enemy attack
-                float addMin = averageThreat * _additionPercentOfThreat * 0.8f;
-                float addMax = averageThreat * _additionPercentOfThreat * 1.8f;
+                float addMin = averageThreat * _additionPercentOfThreat * 0.7f;
+                float addMax = averageThreat * _additionPercentOfThreat * 1.3f;
                 card.Value = Mathf.Max(1, Mathf.Round(Random.Range(addMin, addMax)));
                 break;
 

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class RunManager : MonoBehaviour
 {
     public static RunManager Instance { get; private set; }
+    public int RunId { get; set; }
+    public int CharacterId { get; set; }
 
     [Header("Run State")]
     public float PlayerHP;

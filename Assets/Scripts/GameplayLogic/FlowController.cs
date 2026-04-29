@@ -51,17 +51,46 @@ public class FlowController : MonoBehaviour
 
     private void HandlePlayerWon(OnPlayerWon evt)
     {
-        _winScreen.SetActive(true);
+        DBManager.Instance.EndRun("Victoria", RunManager.Instance.Gold, () => {
+            CheckAndUnlockCharacters();
+            _winScreen.SetActive(true);
+        });
     }
 
     private void HandlePlayerLost(OnPlayerLost evt)
     {
+        DBManager.Instance.EndRun("Derrota", RunManager.Instance.Gold);
         _loseScreen.SetActive(true);
+    }
+
+    private void CheckAndUnlockCharacters()
+    {
+        int totalWins = PlayerPrefs.GetInt("total_wins", 0);
+        totalWins++;
+        PlayerPrefs.SetInt("total_wins", totalWins);
+        PlayerPrefs.Save();
+
+        //Unlocks happen locally immediately, DB is bonus
+        if (totalWins >= 1)
+        {
+            DBManager.Instance.UnlockCharacter(2);
+        }
+
+        if (totalWins >= 3)
+        {
+            DBManager.Instance.UnlockCharacter(3);
+        }
     }
 
     private void HandleCombatCompleted(OnCombatCompleted evt)
     {
         RunManager.Instance.CombatCount++;
+        DBManager.Instance.UpdateRunProgress(
+            (int)RunManager.Instance.PlayerHP,
+            RunManager.Instance.Gold,
+            RunManager.Instance.CombatCount
+        );
+
         ShowRewards();
     }
 

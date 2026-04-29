@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d212f233d04d6ee4c866d92707cf3a73, type: 3}
   m_Name: AlbinauricData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterId: 2
   Portrait: {fileID: -3827772250807918378, guid: 0b24d0b7a51987b46804b89556f3517b, type: 3}
   CharacterSprite: {fileID: -493310475744596764, guid: 2f75b80d00704d74f8d9e0faa62bb3ec, type: 3}
   IdleAnimation: {fileID: -3100369314251171874, guid: baa6ed14bcff2ef4e85122ec212147d8, type: 3}

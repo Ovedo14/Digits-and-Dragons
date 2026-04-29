@@ -33,7 +33,7 @@ public class CharacterAnimatorUI : MonoBehaviour
 
      private void HandleDamageDealt(OnDamageDealt evt)
     {
-        if (!evt.ToPlayer) return;
+        if (evt.ToPlayer) return;
         PlayAttack();
     }
     public void PlayAttack()

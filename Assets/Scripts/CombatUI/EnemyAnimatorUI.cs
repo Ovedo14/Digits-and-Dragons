@@ -40,7 +40,7 @@ public class EnemyAnimatorUI : MonoBehaviour
 
     private void HandleDamageDealt(OnDamageDealt evt)
     {
-        if (evt.ToPlayer) return;
+        if (!evt.ToPlayer) return;
         PlayAttack();
     }
 

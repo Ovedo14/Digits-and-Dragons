@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0004572f1dd7a24281f98a34d21d09b, type: 3}
+  m_Name: BoompuffData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  EnemySprite: {fileID: 2150464789906856367, guid: 5dc3ea5c48e91ff4c96f4e622f52df9c, type: 3}
+  IdleAnimation: {fileID: -3100369314251171874, guid: d08f0d004d2ce2d45a3e5beb9effe220, type: 3}
+  AttackAnimation: {fileID: -3704289112126983070, guid: d08f0d004d2ce2d45a3e5beb9effe220, type: 3}
+  MaxHP: 30
+  Bias: 2
+  Operation: 1
+  AddSettings:
+    MinTerms: 2
+    MaxTerms: 4
+    MinValue: 1
+    MaxValue: 10
+  MultSettings:
+    MinTerms: 2
+    MaxTerms: 2
+    MinValue: 3
+    MaxValue: 6
+  DivSettings:
+    MinDividend: 10
+    MaxDividend: 30
+    MinDivisor: 2
+    MaxDivisor: 5
+  GoldReward: 12
+  HealthReward: 5
+  RelicDrop: {fileID: 0}

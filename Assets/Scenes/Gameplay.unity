@@ -349,25 +349,37 @@ MonoBehaviour:
   _enemyManager: {fileID: 1225260327}
   _combatScreen: {fileID: 589175744}
   _eventScreen: {fileID: 1870133551}
-  _rewardScreen: {fileID: 0}
+  _rewardScreen: {fileID: 899767551}
   _enemyStages:
   - enemies:
+    - {fileID: 11400000, guid: 695e84d8463d1ac46879e4ff41b3c2bc, type: 2}
     - {fileID: 11400000, guid: 7a4926b4826348140b818bef59d5a579, type: 2}
-    - {fileID: 11400000, guid: b7ac07ed8125f8240b594c8fc06e28cf, type: 2}
+    - {fileID: 11400000, guid: 326a830e8bafef34bafae21823e62fb3, type: 2}
+    - {fileID: 11400000, guid: 6bef5e7d74e4058489034324d6240654, type: 2}
+    - {fileID: 11400000, guid: 235a35bf52f4b204693edd7365c9bf7f, type: 2}
   - enemies:
     - {fileID: 11400000, guid: 08de4fb283ace11409ddfec6e9ae66ed, type: 2}
+    - {fileID: 11400000, guid: b7ac07ed8125f8240b594c8fc06e28cf, type: 2}
+    - {fileID: 11400000, guid: 0b4859cc0c21f8e449e985bf8bb7e336, type: 2}
     - {fileID: 11400000, guid: 1fd108b79c3e48f4ba72ff15c4c914b8, type: 2}
-  - enemies:
-    - {fileID: 11400000, guid: 7c60c2f95b6d0bb4199db3eb40d05bd7, type: 2}
     - {fileID: 11400000, guid: 5adc0bd59635eed4786720734573d0bc, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: a0549ca3b7ba2d9409ad0ecbaba6d756, type: 2}
     - {fileID: 11400000, guid: 98352b15f8809f846a17f8a8c12d56d6, type: 2}
+    - {fileID: 11400000, guid: fbb415bbd182e9b4fa69683ff04d88b6, type: 2}
+    - {fileID: 11400000, guid: 2d69ff77095ccab4fbf2668e14db967a, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: 5d29e86d22d1aad4a95556713d31424e, type: 2}
+    - {fileID: 11400000, guid: 51f624c32e68aee43bdb5d8746cc6e8e, type: 2}
+    - {fileID: 11400000, guid: 4e45f0ec26143844ea53b83c470b7c05, type: 2}
+    - {fileID: 11400000, guid: 7c60c2f95b6d0bb4199db3eb40d05bd7, type: 2}
   _bossEnemy: {fileID: 11400000, guid: 5e557b53bc8790d43a66cceba7590834, type: 2}
   _eventPool:
   - {fileID: 11400000, guid: 153b1bbdc550f224f851f53442facf0d, type: 2}
   _eventUI: {fileID: 1870133553}
   _winScreen: {fileID: 699049203}
   _loseScreen: {fileID: 931333777}
-  _rewardUI: {fileID: 0}
+  _rewardUI: {fileID: 899767557}
 --- !u!1 &46175054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,7 +2209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2774,7 +2786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4035,7 +4047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 000.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f2fef7912368934facabd7edc631528, type: 2}
   m_sharedMaterial: {fileID: -7472256330690169278, guid: 2f2fef7912368934facabd7edc631528, type: 2}
@@ -4146,7 +4158,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &899767553
 MonoBehaviour:
@@ -5771,9 +5783,9 @@ MonoBehaviour:
   _handSize: 5
   _guaranteedAdditions: 3
   _enemyManager: {fileID: 1225260327}
-  _additionPercentOfThreat: 0.5
-  _multiplyMin: 1.5
-  _multiplyMax: 3
+  _additionPercentOfThreat: 0.7
+  _multiplyMin: 1.3
+  _multiplyMax: 2.2
   _cardPool:
   - {fileID: 11400000, guid: 743f73508d3f7f244ba246a5988a62a5, type: 2}
   - {fileID: 11400000, guid: 7f7e4c0fb31bfff44bc1863cf5d54968, type: 2}
@@ -6309,8 +6321,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 176.31, y: -17.999989}
-  m_SizeDelta: {x: 223.17, y: 84.94}
+  m_AnchoredPosition: {x: 179, y: -18}
+  m_SizeDelta: {x: 247.57, y: 84.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1415703731
 MonoBehaviour:
@@ -8297,7 +8309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 000/000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8850,7 +8862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 00/00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10009,8 +10021,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95.24, y: -132.99997}
-  m_SizeDelta: {x: 223.17, y: 84.94}
+  m_AnchoredPosition: {x: 133, y: -139.18}
+  m_SizeDelta: {x: 247.57, y: 84.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998702195
 MonoBehaviour:
@@ -10283,7 +10295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 492, y: -40.07}
+  m_AnchoredPosition: {x: 491, y: -0.000015259}
   m_SizeDelta: {x: 727.49, y: 186.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043180860
@@ -10520,7 +10532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -814.84, y: 419.65}
+  m_AnchoredPosition: {x: -830.92, y: 438}
   m_SizeDelta: {x: 382.59, y: 388.71}
   m_Pivot: {x: 0.46412912, y: 0.54797447}
 --- !u!114 &2052823188
@@ -10937,8 +10949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259.86, y: 96.2}
-  m_SizeDelta: {x: 223.17, y: 84.94}
+  m_AnchoredPosition: {x: 247.66, y: 96.2}
+  m_SizeDelta: {x: 247.57, y: 84.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137169055
 MonoBehaviour:
@@ -10960,7 +10972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 00+00+00+00+00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f2fef7912368934facabd7edc631528, type: 2}
   m_sharedMaterial: {fileID: -7472256330690169278, guid: 2f2fef7912368934facabd7edc631528, type: 2}
@@ -11050,5 +11062,5 @@ SceneRoots:
   - {fileID: 931333783}
   - {fileID: 1870133552}
   - {fileID: 589175745}
-  - {fileID: 996818789}
   - {fileID: 899767556}
+  - {fileID: 996818789}

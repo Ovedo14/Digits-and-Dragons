@@ -4,6 +4,8 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/Character")]
 public class CharacterData : ScriptableObject
 {
+    public int characterId;
+    
     [Header("Visuals")]
     public Sprite Portrait;
     public Sprite CharacterSprite;

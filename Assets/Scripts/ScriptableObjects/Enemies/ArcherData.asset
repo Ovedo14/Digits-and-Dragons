@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0004572f1dd7a24281f98a34d21d09b, type: 3}
+  m_Name: ArcherData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  EnemySprite: {fileID: 7257567913506708742, guid: 277a50fd24135436398811e3293b2aa2, type: 3}
+  IdleAnimation: {fileID: 7400000, guid: 98336226cc8844366a0b5597a82db25d, type: 2}
+  AttackAnimation: {fileID: 7400000, guid: 92ca6748c0e864135a3d40c8ce290b53, type: 2}
+  MaxHP: 20
+  Bias: 0
+  Operation: 0
+  AddSettings:
+    MinTerms: 2
+    MaxTerms: 3
+    MinValue: 3
+    MaxValue: 9
+  MultSettings:
+    MinTerms: 2
+    MaxTerms: 3
+    MinValue: 3
+    MaxValue: 9
+  DivSettings:
+    MinDividend: 10
+    MaxDividend: 30
+    MinDivisor: 2
+    MaxDivisor: 5
+  GoldReward: 10
+  HealthReward: 5
+  RelicDrop: {fileID: 0}
