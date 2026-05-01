@@ -35,4 +35,4 @@ MonoBehaviour:
     MaxDivisor: 5
   GoldReward: 49
   HealthReward: 21
-  RelicDrop: {fileID: 0}
+  RelicDrop: {fileID: 11400000, guid: acba3d9ee6b91ce40ac92ebd56bc54a7, type: 2}

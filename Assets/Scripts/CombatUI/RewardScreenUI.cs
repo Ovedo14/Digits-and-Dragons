@@ -21,7 +21,7 @@ public class RewardScreenUI : MonoBehaviour
 
         if (defeatedEnemy.RelicDrop != null)
         {
-            RunManager.Instance.Relics.Add(defeatedEnemy.RelicDrop);
+            RelicManager.Instance.AddRelic(defeatedEnemy.RelicDrop);
             _relicText.text = defeatedEnemy.RelicDrop.RelicName;
             _relicIcon.sprite = defeatedEnemy.RelicDrop.Icon;
             _relicContainer.SetActive(true);

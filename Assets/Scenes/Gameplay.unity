@@ -3467,8 +3467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -261.49, y: 467.8}
-  m_SizeDelta: {x: -1066.42, y: -935.6}
+  m_AnchoredPosition: {x: -65.05, y: 467.8}
+  m_SizeDelta: {x: -673.53, y: -935.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &652858798
 MonoBehaviour:
@@ -3521,12 +3521,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
-    m_Left: 25
+    m_Left: 50
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 5
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -5536,6 +5536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   _laneManager: {fileID: 595355443}
   _enemyAnimatorUI: {fileID: 1082984293}
+  _currentHP: 0
 --- !u!1 &1229341731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,9 +5812,9 @@ MonoBehaviour:
   _handSize: 5
   _guaranteedAdditions: 3
   _enemyManager: {fileID: 1225260327}
-  _additionPercentOfThreat: 0.8
+  _additionPercentOfThreat: 0.7
   _multiplyMin: 1.3
-  _multiplyMax: 2.5
+  _multiplyMax: 2.2
   _cardPool:
   - {fileID: 11400000, guid: 743f73508d3f7f244ba246a5988a62a5, type: 2}
   - {fileID: 11400000, guid: 7f7e4c0fb31bfff44bc1863cf5d54968, type: 2}

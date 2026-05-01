@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d979b047308c66e419181163d0cf159f, type: 3}
+  m_Name: TurtleTalismanData
+  m_EditorClassIdentifier: Assembly-CSharp::HealIfRelic
+  RelicId: 14
+  RelicName: Talisman Tortuga
+  Description: "TALISMAN TORTUGA: Si tienes poca vida suma +20 a todas las l\xEDneas.
+    +20 vida m\xE1xima"
+  Icon: {fileID: 2120130115821151688, guid: 6e39c96bd9f25e647884fe5f32ac2761, type: 3}
+  Trigger: 0
+  bonusValue1: 20
+  bonusValue2: 20
+  bonusValue3: 20
+  extraHp: 20

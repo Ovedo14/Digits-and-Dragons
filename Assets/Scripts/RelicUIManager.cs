@@ -8,11 +8,35 @@ public class RelicUIManager : MonoBehaviour
 
     private List<GameObject> _spawnedIcons = new List<GameObject>();
 
+    void OnEnable()
+    {
+        EventBus.Subscribe<OnRelicAdded>(HandleRelicAdded);
+    }
+
+    void OnDisable()
+    {
+        EventBus.Unsubscribe<OnRelicAdded>(HandleRelicAdded);
+    }
+
+    private void HandleRelicAdded(OnRelicAdded evt)
+    {
+        AddSingleRelic(evt.Relic);
+    }
     void Start()
     {
         RefreshUI();
     }
 
+    private void AddSingleRelic(RelicData relic)
+    {
+        GameObject obj = Instantiate(relicPrefab, container);
+
+        RelicIconUI iconUI = obj.GetComponent<RelicIconUI>();
+        iconUI.Setup(relic);
+
+        _spawnedIcons.Add(obj);
+    }
+    
     public void RefreshUI()
     {
         ClearUI();

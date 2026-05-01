@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using System.Text;
 using UnityEngine.SceneManagement;
 using TMPro.Examples;
-using UnityEditor.PackageManager;
 using TMPro;
 
 public class UserVerification : MonoBehaviour

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2d72e9d05ffe6469b3c2a3abd657cf, type: 3}
+  m_Name: GrogorothData
+  m_EditorClassIdentifier: Assembly-CSharp::MultFirstCardRelic
+  RelicId: 3
+  RelicName: Marca de Grogoroth
+  Description: 'MARCA DE GROGOROTH: Tu primer carta se aplica con 1.15x cada turno'
+  Icon: {fileID: 4220819650194986884, guid: 3075c2b622b452f4981eddcbb0113b6a, type: 3}
+  Trigger: 2
+  _bonusAmount: 1.15

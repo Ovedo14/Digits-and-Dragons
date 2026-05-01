@@ -3968,7 +3968,7 @@ MonoBehaviour:
   Relics: []
   Gold: 0
   CombatCount: 0
-  _combatsBeforeBoss: 1
+  _combatsBeforeBoss: 4
 --- !u!4 &1788303858
 Transform:
   m_ObjectHideFlags: 0

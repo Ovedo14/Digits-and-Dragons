@@ -18,4 +18,5 @@ MonoBehaviour:
   IdleAnimation: {fileID: -3100369314251171874, guid: baa6ed14bcff2ef4e85122ec212147d8, type: 3}
   AttackAnimation: {fileID: 6720303635017113406, guid: baa6ed14bcff2ef4e85122ec212147d8, type: 3}
   StartingHP: 30
-  StartingRelics: []
+  StartingRelics:
+  - {fileID: 11400000, guid: c2f7fff6e03f68d498f0aa5232e33ae6, type: 2}

@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class RelicIconUI : MonoBehaviour
 {
-    [SerializeField] private Image icon;
+    [SerializeField] private Image _icon;
 
     public void Setup(RelicData relic)
     {
-        icon.sprite = relic.Icon;
+        _icon.sprite = relic.Icon;
+        GetComponent<RelicTooltip>()?.Setup(relic);
     }
 }

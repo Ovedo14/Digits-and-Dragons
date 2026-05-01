@@ -15,7 +15,7 @@ MonoBehaviour:
   EnemySprite: {fileID: 3782158873545141688, guid: f156850e3bfd31e4d95cd2ea444f8b71, type: 3}
   IdleAnimation: {fileID: 7400000, guid: 605fb1af6b00ffd40ae81739e882266b, type: 2}
   AttackAnimation: {fileID: 7400000, guid: 605fb1af6b00ffd40ae81739e882266b, type: 2}
-  MaxHP: 750
+  MaxHP: 1000
   Bias: 2
   Operation: 3
   AddSettings:

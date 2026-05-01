@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AegisData
   m_EditorClassIdentifier: Assembly-CSharp::HealRelicData
   RelicId: 1
-  RelicName: AegisData
+  RelicName: Aegis
+  Description: 'AEGIS: Recuperas +2 de vida cada turno'
   Icon: {fileID: 21300000, guid: a1ce5e93205074fa0b03cc1070dbdeca, type: 3}
   Trigger: 0
-  healAmount: 4
+  healAmount: 2
+  extraHp: 0
